@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Команды для запуска в Django chell:
 
 1. Создать двух пользователей:
@@ -342,4 +342,4 @@
 11. Вывести все комментарии (дата, пользователь, рейтинг, текст) к этой статье: 
 
     > Comment.objects.filter(post_id = 1).values('comment_date', 'user', 'rating_comment', 'comment_text') 
->>>>>>> 97880375e970ad707278d2cc47e0645787bbbf31
+
