@@ -8,7 +8,16 @@ Posts
 {% endblock title %}
 
 {% block content %}
-   <h1>Все посты {{ posts|length}}</h1>
+   <h1>Все посты </h1>
+
+   {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
+   <form action="" method="get">
+
+       {{ filterset.form.as_p }}
+       <input type="submit" value="Найти" />
+   </form>
+
+
    <h3>{% current_time '%d %b %Y' %}</h3>
    <h3> {{ next_post|default_if_none:"Посты постоянно добавляются" }} </h3>
    <hr>
