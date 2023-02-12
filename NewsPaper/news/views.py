@@ -30,6 +30,7 @@ class PostList(ListView):
 
 class PostSearch(ListView):
     model = Post
+    ordering = 'post'
     template_name = 'post_search.html'
     context_object_name = 'posts'
     paginate_by = 5
