@@ -8,27 +8,26 @@ Posts
 {% endblock title %}
 
 {% block content %}
-   <h1>Все посты {{ posts|length}}</h1>
-   <h3>{% current_time '%d %b %Y' %}</h3>
-   <h3> {{ next_post|default_if_none:"Посты постоянно добавляются" }} </h3>
+   <h1>Всего постов на странице: {{ posts|length}}</h1>
+   <h4>Сегодня: {% current_time '%d %b %Y' %}</h4>
+   <h4> {{ next_post|default_if_none:"Посты постоянно добавляются" }} </h4>
    <hr>
+   <br>
    {% if posts %}
-       <table>
-           <tr>
-               <td>Заголовок</td>
-               <td>Дата публикации</td>
-               <td>Содержание поста</td>
-           </tr>
+
 
            {% for post in posts %}
-           <tr>
-               <td>{{ post.header_post  }}</td>
-               <td>{{ post.post_date |date:'d M Y' }}</td>
-               <td>{{ post.text_post | truncatechars:20 }}</td>
-           </tr>
+
+               <h5>{{ post.header_post  }}</h5>
+               <p>{{ post.text_post | truncatechars:120 }}</p>
+               <span>{{ post.post_date |date:'d M Y' }}</span>
+               <br>
+               <br>
+
+
            {% endfor %}
 
-       </table>
+
    {% else %}
        <h2>Постов нет!</h2>
    {% endif %}

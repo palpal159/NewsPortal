@@ -8,13 +8,14 @@ Posts
 {% endblock title %}
 
 {% block content %}
-   <h1>Все посты </h1>
+   <h1>Фильтры постов:</h1>
 
    {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
    <form action="" method="get">
        {{ filterset.form.as_p }}
        <input type="submit" value="Найти" />
    </form>
+   <br>
 
 
    <h3>{% current_time '%d %b %Y' %}</h3>

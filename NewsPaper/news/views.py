@@ -1,9 +1,11 @@
+from django.http import request
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .filters import PostFilter
 from .forms import PostForm
-from .models import Post, Author
-
+from .models import Post, Author, User
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 class PostList(ListView):
@@ -24,8 +26,6 @@ class PostList(ListView):
         queryset = super().get_queryset()
         self.filterset = PostFilter(self.request.GET, queryset)
         return self.filterset.qs
-
-
 
 
 class PostSearch(ListView):
@@ -52,11 +52,11 @@ class PostDetail(DetailView):
     context_object_name = 'posts'
 
 
-# Добавляем новое представление для создания товаров.
-class NewsCreate(CreateView):
+class NewsCreate(CreateView, LoginRequiredMixin, TemplateView, PermissionRequiredMixin):
     form_class = PostForm
     model = Post
     template_name = 'news_create.html'
+    permission_required = ('news.add_news', 'news.update_news')
 
     def form_valid(self, form):
         post = form.save(commit=False)
@@ -65,10 +65,11 @@ class NewsCreate(CreateView):
         return super().form_valid(form)
 
 
-class ArticlesCreate(CreateView):
+class ArticlesCreate(CreateView, LoginRequiredMixin, TemplateView, PermissionRequiredMixin):
     form_class = PostForm
     model = Post
     template_name = 'articles_create.html'
+    permission_required = ('articles.add_articles', 'articles.update_articles')
 
     def form_valid(self, form):
         post = form.save(commit=False)
@@ -78,19 +79,18 @@ class ArticlesCreate(CreateView):
 
 
 # Добавляем представление для изменения товара.
-class NewsUpdate(UpdateView):
+class NewsUpdate(UpdateView, LoginRequiredMixin, TemplateView):
     form_class = PostForm
     model = Post
     template_name = 'news_create.html'
 
 
-class ArticlesUpdate(UpdateView):
+class ArticlesUpdate(UpdateView, LoginRequiredMixin, TemplateView):
     form_class = PostForm
     model = Post
     template_name = 'articles_create.html'
 
 
-# Представление удаляющее товар.
 class NewsDelete(DeleteView):
     model = Post
     template_name = 'news_delete.html'

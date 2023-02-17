@@ -4,6 +4,7 @@ from django.urls import reverse
 
 
 class Author(models.Model):
+    objects = User
     rating_author = models.FloatField(default=0.0)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 

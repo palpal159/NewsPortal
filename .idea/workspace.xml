@@ -5,9 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ceeb8a2b-788c-4eb4-8acc-f55e34c977d5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/NewsPaper/accounts/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/protect/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/protect/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/protect/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/protect/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/protect/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/protect/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/protect/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/protect/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/sign/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/sign/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/sign/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/sign/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/sign/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/sign/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/sign/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/sign/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/sign/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/static/assets/img/about-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/static/assets/img/contact-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/static/assets/img/home-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/static/assets/img/post-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/static/assets/img/post-sample-image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/templates/account/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/templates/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/templates/protect/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/templates/sign/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/templates/sign/logout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NewsPaper/templates/sign/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsPaper/news/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/news/filters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/NewsPapeer/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/NewsPapeer/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/NewsPapeer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/NewsPapeer/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/news/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsPaper/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/news/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/static/assets/img/bg-masthead.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/static/assets/img/bg-signup.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/static/assets/img/demo-image-01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/static/assets/img/demo-image-02.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/static/assets/img/ipad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/templates/flatpages/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/templates/flatpages/default.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsPaper/templates/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/templates/post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsPaper/templates/post_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsPaper/templates/post_search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +60,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -37,18 +79,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/pavelcherepanov/Desktop/Python projects/NewsPortal"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pavelcherepanov/Desktop/Python projects/NewsPortal/NewsPaper/static&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/NewsPaper/static" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/NewsPaper/static" />
       <recent name="$PROJECT_DIR$/NewsPaper/tempates/flatpages" />
