@@ -4,13 +4,13 @@
 {% load custom_tags %}
 
 {% block title %}
-Posts
+News
 {% endblock title %}
 
 {% block content %}
-   <h1>Всего постов на странице: {{ posts|length}}</h1>
+   <h1>Всего новостей на странице: {{ posts|length}}</h1>
    <h4>Сегодня: {% current_time '%d %b %Y' %}</h4>
-   <h4> {{ next_post|default_if_none:"Посты постоянно добавляются" }} </h4>
+   <h4> {{ next_post|default_if_none:"Новости постоянно добавляются" }} </h4>
    <hr>
    <br>
    {% if posts %}
@@ -20,9 +20,7 @@ Posts
 
                <h5>{{ post.header_post  }}</h5>
                <p>{{ post.text_post | truncatechars:120 }}</p>
-               <span><b>{{ post.post_date |date:'d M Y' }}</b></span>
-               <p><b>{{ post.category }}</b></p>
-               <p>{{ post.author }}</p>
+               <span>{{ post.post_date |date:'d M Y' }}</span>
                <br>
                <br>
 
@@ -31,7 +29,7 @@ Posts
 
 
    {% else %}
-       <h2>Постов нет!</h2>
+       <h2>Новостей нет!</h2>
    {% endif %}
 
     {# Добавляем пагинацию на страницу #}

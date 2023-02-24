@@ -10,6 +10,7 @@ class PostFilter(FilterSet):
         model = Post
         fields = {
             'post': ['exact'],
+            'author': ['exact'],
             'category': ['exact'],
         }
         widget = forms.DateInput()

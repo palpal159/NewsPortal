@@ -4,41 +4,48 @@ from django.urls import reverse
 
 
 class Author(models.Model):
-    objects = User
     rating_author = models.FloatField(default=0.0)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def update_rating(self):
-        for post in Post.objects.filter(author=self):
+        self.rating_author = 0
+        posts = Post.objects.filter(author=self)
+        for post in posts:
             self.rating_author += post.rating_post * 3
-            for comment in Comment.objects.filter(post=post):
+            comments = Comment.objects.filter(post=post)
+            for comment in comments:
                 self.rating_author += comment.rating_comment
-        for comment in Comment.objects.filter(user=self.user):
-            self.rating_author += comment.rating_comment
+            own_comments = Comment.objects.filter(user=self.user)
+            for own_comment in own_comments:
+                self.rating_author += own_comment.rating_comment
+
         self.save()
+
+    def __str__(self):
+        return f'{self.user}'
 
 
 class Category(models.Model):
     category = models.CharField(max_length=255, unique=True)
 
     def __str__(self):
-        return self.category.title()
+        return self.category
 
 
 class Post(models.Model):
-    news = 'NE'
-    article = 'AR'
+    NEWS = 'NE'
+    ARTICLE = 'AR'
     POST = [
-        (news, 'Новость'),
-        (article, 'Статья'),
+        (NEWS, 'Новость'),
+        (ARTICLE, 'Статья'),
     ]
-    post = models.CharField(max_length=2, choices=POST, default=news)
-    post_date = models.DateTimeField(auto_now_add=True)
+    post = models.CharField(max_length=2, choices=POST, default=NEWS)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     header_post = models.CharField(max_length=255)
     text_post = models.TextField()
-    rating_post = models.FloatField(default=0.0)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     category = models.ManyToManyField(Category, through='PostCategory')
+    post_date = models.DateTimeField(auto_now_add=True)
+    rating_post = models.FloatField(default=0.0)
 
     def like_post(self):
         self.rating_post += 1
@@ -50,6 +57,9 @@ class Post(models.Model):
 
     def preview(self):
         return self.text_post[:144] + '...'
+
+    def __str__(self):
+        return self.header_post
 
     def get_absolute_url(self):
         return reverse('post_detail', args=[str(self.id)])

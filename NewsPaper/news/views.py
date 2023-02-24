@@ -10,40 +10,32 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 
 class PostList(ListView):
     model = Post
-    ordering = 'id'
-    post = 'post'
-    category = 'category'
+    ordering = ['-post_date']
     template_name = 'post.html'
     context_object_name = 'posts'
     paginate_by = 5  # вот так мы можем указать количество записей на странице
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['filterset'] = self.filterset
         return context
+
+
+class PostSearch(ListView):
+    model = Post
+    ordering = ['-post_date']
+    template_name = 'post_search.html'
+    context_object_name = 'posts'
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = super().get_queryset()
         self.filterset = PostFilter(self.request.GET, queryset)
         return self.filterset.qs
-
-
-class PostSearch(ListView):
-    model = Post
-    ordering = 'post'
-    template_name = 'post_search.html'
-    context_object_name = 'posts'
-    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filterset'] = self.filterset
         return context
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        self.filterset = PostFilter(self.request.GET, queryset)
-        return self.filterset.qs
 
 
 class PostDetail(DetailView):
@@ -58,11 +50,16 @@ class NewsCreate(CreateView, LoginRequiredMixin, TemplateView, PermissionRequire
     template_name = 'news_create.html'
     permission_required = ('news.add_news', 'news.update_news')
 
-    def form_valid(self, form):
-        post = form.save(commit=False)
-        post.author = Author.objects.all()[1]
-        post.post = 'NE'
-        return super().form_valid(form)
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        user = request.user
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = Author.objects.get_or_created(user=user)[0]
+            post.save()
+            return self.form_valid(form)
+        else:
+            return self.form_valid(form)
 
 
 class ArticlesCreate(CreateView, LoginRequiredMixin, TemplateView, PermissionRequiredMixin):
@@ -71,11 +68,16 @@ class ArticlesCreate(CreateView, LoginRequiredMixin, TemplateView, PermissionReq
     template_name = 'articles_create.html'
     permission_required = ('articles.add_articles', 'articles.update_articles')
 
-    def form_valid(self, form):
-        post = form.save(commit=False)
-        post.author = Author.objects.all()[0]
-        post.post = 'AR'
-        return super().form_valid(form)
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        user = request.user
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = Author.objects.first()
+            post.save()
+            return self.form_valid(form)
+        else:
+            return self.form_valid(form)
 
 
 # Добавляем представление для изменения товара.
